@@ -113,7 +113,7 @@ O projeto utiliza o protocolo **MQTT (Message Queuing Telemetry Transport)** par
 ## Estrutura do repositório
 
 ```
-lixeira-inteligente-ods11/
+lixeira_inteligente/
 ├── firmware/
 │   └── lixeiraint.ino  
 └── README.md
