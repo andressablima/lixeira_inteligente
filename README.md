@@ -2,7 +2,7 @@
 
 Protótipo de IoT para monitoramento volumétrico de resíduos sólidos urbanos, desenvolvido como projeto final da disciplina de **Objetos Inteligentes Conectados** do curso de Análise e Desenvolvimento de Sistemas da Universidade Presbiteriana Mackenzie.
 
-A solução utiliza um sensor ultrassônico para medir o nível de preenchimento da lixeira em tempo real, aciona LEDs indicadores conforme o nível detectado e publica alertas via protocolo MQTT, contribuindo para a meta 11.6 do **ODS 11 — Cidades e Comunidades Sustentáveis**.
+A solução utiliza um sensor ultrassônico para medir o nível de preenchimento da lixeira em tempo real, aciona LEDs indicadores conforme o nível detectado e publica alertas via protocolo MQTT, contribuindo para a meta 11.6 do **ODS 11: Cidades e Comunidades Sustentáveis**.
 
 ---
 
@@ -115,7 +115,7 @@ O projeto utiliza o protocolo **MQTT (Message Queuing Telemetry Transport)** par
 ```
 lixeira-inteligente-ods11/
 ├── firmware/
-│   └── lixeiraint.ino   # Código-fonte do ESP32
+│   └── lixeiraint.ino  
 └── README.md
 ```
 
@@ -124,4 +124,4 @@ lixeira-inteligente-ods11/
 ## Autores
 
 Projeto desenvolvido por **Andressa Bezerra de Lima** e **Leandro Carlos Fernandes**  
-Universidade Presbiteriana Mackenzie — ADS — 2025/2026
+Universidade Presbiteriana Mackenzie — Análise e Desenvolvimento de Sistemas - 2026
