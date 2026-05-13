@@ -1,15 +1,15 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-// --- Configurações de Conectividade ---
+// Conectividade
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
-const char* mqtt_server = "broker.hivemq.com"; // Servidor público gratuito
+const char* mqtt_server = "broker.hivemq.com"; // Servidor público solicitado
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-// --- Definição dos Pinos (Baseado na sua foto image_9743ea.png) ---
+// Definindo os Pinos
 const int trigPin = 12;      // Sensor TRIG
 const int echoPin = 14;      // Sensor ECHO
 const int ledVerde = 2;      // LED Verde
@@ -22,7 +22,7 @@ void setup_wifi() {
   Serial.println(ssid);
   WiFi.begin(ssid, password);
 
-  // Tenta conectar, mas não trava o código se falhar
+  // Tenta conectar
   int tentativas = 0;
   while (WiFi.status() != WL_CONNECTED && tentativas < 20) {
     delay(500);
@@ -52,7 +52,7 @@ void reconnect() {
 }
 
 void setup() {
-  Serial.begin(115200); // Velocidade correta para ESP32
+  Serial.begin(115200); // Velocidade para ESP32
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(ledVerde, OUTPUT);
@@ -69,7 +69,7 @@ void loop() {
     client.loop();
   }
 
-  // --- Medição de Distância ---
+  //Medindo Distância 
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -79,20 +79,20 @@ void loop() {
   long duracao = pulseIn(echoPin, HIGH);
   int distancia = duracao * 0.034 / 2;
 
-  // --- Exibição no Monitor Serial ---
+  //Exibição no Monitor 
   Serial.print("Distancia capturada: ");
   Serial.print(distancia);
   Serial.println(" cm");
 
-  // --- Lógica de Alertas e Atuadores (Ordem Prioritária) ---
+  //Alertas e Atuadores 
   
   // 1. Nível Crítico (100% Cheia)
   if (distancia < 10) {
     digitalWrite(ledVermelho, HIGH);
     digitalWrite(ledAmarelo, LOW);
     digitalWrite(ledVerde, LOW);
-    Serial.println(">>> ALERTA MÁXIMO: LIXEIRA 100% CHEIA! <<<");
-    if (client.connected()) client.publish("ods11/lixeira/status", "100% CHEIA");
+    Serial.println(">>> Alerta Máximo: LIXEIRA 100% CHEIA! <<<");
+    if (client.connected()) client.publish("ods11/lixeira/status", "100% Cheia");
   } 
   
   // 2. Nível de Atenção (80% Cheia)
@@ -100,8 +100,8 @@ void loop() {
     digitalWrite(ledVermelho, LOW);
     digitalWrite(ledAmarelo, HIGH); // Agora o Amarelo deve acender!
     digitalWrite(ledVerde, LOW);
-    Serial.println("--- AVISO PREVENTIVO: LIXEIRA 80% CHEIA ---");
-    if (client.connected()) client.publish("ods11/lixeira/status", "80% CHEIA");
+    Serial.println("--- Aviso preventivo: Lixeira 80% cheia ---");
+    if (client.connected()) client.publish("ods11/lixeira/status", "80% Cheia");
   } 
   
   // 3. Nível Normal
