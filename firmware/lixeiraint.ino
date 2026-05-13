@@ -14,7 +14,7 @@ const int trigPin = 12;      // Sensor TRIG
 const int echoPin = 14;      // Sensor ECHO
 const int ledVerde = 2;      // LED Verde
 const int ledAmarelo = 4;    // LED Amarelo
-const int ledVermelho = 16;   // LED Vermelho (Pino 16 conforme sua foto)
+const int ledVermelho = 15;   // LED Vermelho (Pino 16 conforme sua foto)
 
 void setup_wifi() {
   delay(10);
